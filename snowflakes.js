@@ -34,7 +34,7 @@ function createSnowflakeAt(x, y) {
 }
 
 function addSnowflakesAt(x, y) {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 2; i++) {
         snowflakes.push(createSnowflakeAt(x, y));
     }
 }
@@ -58,7 +58,7 @@ function updateSnowflakes() {
 
         ctx.beginPath();
         ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+        ctx.fillStyle = `rgba(92, 92, 92, ${flake.opacity})`;
         ctx.fill();
     }
 
@@ -85,7 +85,7 @@ function animateSnowflakes() {
 
 function initSnowflakes() {
     resizeCanvas();
-    for (let i = 0; i < 250; i++) {
+    for (let i = 0; i < 100; i++) {
         snowflakes.push(createSnowflake());
     }
     animateSnowflakes();
@@ -100,26 +100,7 @@ document.addEventListener('click', (event) => {
     addSnowflakesAt(event.clientX, event.clientY);
 });
 
-document.getElementById('scrollArrow').addEventListener('click', () => {
-    smoothScrollTo(window.innerHeight, 1000);
-});
 
 window.addEventListener('resize', resizeCanvas);
 window.addEventListener('scroll', resizeCanvas);
 window.addEventListener('load', initSnowflakes);
-
-function smoothScrollTo(targetY, duration) {
-    const startY = window.scrollY;
-    const distanceY = targetY - startY;
-    let startTime = null;
-
-    function animation(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const progress = Math.min(timeElapsed / duration, 1);
-        window.scrollTo(0, startY + distanceY * progress);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    requestAnimationFrame(animation);
-}

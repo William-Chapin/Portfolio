@@ -7,15 +7,89 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>William Chapin</h1>
-    <h2>High School Student, Developer, and Gamer.</h2>
+    <div class="header-container">
+        <h1>William Chapin</h1>
+        <h2>High School Student, Developer.</h2>
+    </div>
     <canvas id="snowflakesCanvas"></canvas>
     <div class="arrow" id="scrollArrow"></div>
-    <div id="moreContent">
-        <p>More content here...</p>
+    <div id="aboutMe">
+        <h3>About Me</h3>
+        <p>Hello! I'm William Chapin, a high school student with a passion for programming and technology. I've been coding for over five years, coding in various different languages such as Java and Python. Recently, I have started learning web development to expand my skills. When I'm not coding, I also participate in FTC robotics and Scouting.</p>
+        <div class="button-container">
+            <button onclick="showContent('skillsContent')" id="skillsButton">Skills</button>
+            <button onclick="showContent('educationContent')" id="educationButton">Education</button>
+            <button onclick="showContent('experienceContent')" id="experienceButton">Experience</button>
+        </div>
+        <div id="skillsContent" class="button-content">
+            <div class="card">
+                <img src="images/python.png" alt="Skills Image">
+                <div class="card-content">
+                    <h4><a href="https://www.python.org" target="_blank">Python</a></h4>
+                    <span>2020 - Present</span>
+                    <span class="card-description">Experienced in data analysis and APIs.</span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/java.png" alt="Skills Image">
+                <div class="card-content">
+                    <h4><a href="https://www.java.com" target="_blank">Java</a></h4>
+                    <span>2022 - Present</span>
+                    <span class="card-description">Proficient in Minecraft modding and general applications.</span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/javascript.png" alt="Skills Image">
+                <div class="card-content">
+                    <h4>Javascript</h4>
+                    <span>2024 - Present</span>
+                </div>
+            </div>
+        </div>
+        <div id="educationContent" class="button-content">
+            <div class="card">
+                <img src="images/tjhsst.png" alt="TJHSST Image">
+                <div class="card-content">
+                    <h4><a href="https://tjhsst.fcps.edu" target="_blank">Thomas Jefferson High School for Science and Technology</a></h4>
+                    <span>2023 - Present</span>
+                    <span class="card-description">Class of 2027</span>
+                </div>
+            </div>
+        </div>
+        <div id="experienceContent" class="button-content">
+            <div class="card">
+                <img src="images/ftc.png" alt="Experience Image">
+                <div class="card-content">
+                    <ul>
+                        <h4><a href="https://www.firstinspires.org/robotics/ftc" target="_blank">FIRST Tech Challenge</a></h4>
+                        <span>2022 - Present</span>
+                        <span class="card-description"><a href="http://bruinbots.com/" target="_blank" style="color: inherit;">Team #13599</a></span>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/hacktj.png" alt="Experience Image">
+                <div class="card-content">
+                    <ul>
+                        <h4><a href="https://hacktj.org" target="_blank">HackTJ 11.0</a></h4>
+                        <span>2024</span>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="socials" class="socials-container">
+        <a href="https://github.com/William-Chapin" target="_blank" class="social-button">
+            <img src="https://img.icons8.com/?size=100&id=62856&format=png&color=000000" alt="GitHub">
+        </a>
+        <a href="https://www.instagram.com/william._.chapin" target="_blank" class="social-button">
+            <img src="https://img.icons8.com/?size=100&id=59813&format=png&color=000000" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61550979844497" target="_blank" class="social-button">
+            <img src="https://img.icons8.com/?size=100&id=118467&format=png&color=000000" alt="Facebook">
+        </a>
     </div>
     <script src="app.js"></script>
     <script src="snowflakes.js"></script>
-    <script src="scroll.js"></script>
 </body>
 </html>

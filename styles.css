@@ -1,9 +1,9 @@
 body {
     margin: 0;
-    background: blue;
+    background: #2e2e2e;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     min-height: 200vh;
 }
@@ -12,15 +12,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+    text-align: center;
 }
 
 h1, h2 {
     text-align: center;
     user-select: none;
     margin: 0;
-    padding: 3px 50px;
+    padding: 3px 20px;
     z-index: 1;
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -28,12 +35,45 @@ h1 {
     font-family: 'Comic Sans MS', cursive;
     font-weight: bold;
     color: lightskyblue;
+    animation: bounce 2s infinite;
 }
 
 h2 {
     font-size: 1.6em;
     font-family: 'Trebuchet MS', sans-serif;
     color: gainsboro;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 #snowflakesCanvas {
@@ -52,15 +92,278 @@ h2 {
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 15px solid grey;
+    border-top: 15px solid white;
     cursor: pointer;
     z-index: 1;
+    animation: pulse 1s infinite;
 }
 
-#moreContent {
-    display: block;
-    margin-top: 100vh;
+#aboutMe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
     text-align: center;
     color: white;
     font-family: 'Arial', sans-serif;
+    position: relative;
+}
+
+#aboutMe h3 {
+    font-size: 2em;
+    margin: 20px 0;
+    padding: 10px;
+    user-select: none;
+}
+
+#aboutMe p {
+    font-size: 1.2em;
+    margin: 20px;
+    max-width: 800px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-container button {
+    font-size: 1.2em;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 25px;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-container button:hover {
+    background-color: #45a049;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.button-container button.active {
+    background-color: #45a049;
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    color: white; /* Ensure text color remains white */
+    border: 2px solid #ffffff; /* Add border around the selected button */
+}
+
+.button-content {
+    display: none;
+    margin-top: 10px;
+    text-align: left;
+    max-width: 800px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.button-content.active {
+    display: block;
+    opacity: 1;
+}
+
+.button-content.active .card {
+    animation: popUp 0.5s ease-in-out;
+}
+
+.card {
+    background-color: rgba(34, 34, 34, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    color: #f0f0f0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    height: 200px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.card img {
+    max-width: 150px;
+    max-height: 100%;
+    border-radius: 10px;
+    margin-right: 20px;
+    object-fit: contain;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.card-content h4 {
+    margin: 0;
+    font-size: 1.5em;
+    position: relative;
+    width: 100%;
+}
+
+.card-content h4 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-content h4 a:hover {
+    text-decoration: underline;
+}
+
+.card-content span {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #ffffff;
+}
+
+.card-content .card-description {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #999999;
+}
+
+.card-content .card-description a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-content .card-description a:hover {
+    text-decoration: underline;
+}
+
+.card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.card li {
+    margin: 5px 0;
+}
+
+.socials-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.social-button {
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.social-button img {
+    width: 30px;
+    height: 30px;
+}
+
+.social-button:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    #aboutMe h3 {
+        font-size: 1.5em;
+    }
+
+    #aboutMe p {
+        font-size: 1em;
+    }
+
+    .card {
+        height: auto;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .card img {
+        max-width: 100px;
+        margin: 0 0 10px 0;
+    }
+
+    .card-content h4 {
+        font-size: 1.2em;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 6em;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    #aboutMe h3 {
+        font-size: 1.2em;
+    }
+
+    #aboutMe p {
+        font-size: 0.9em;
+        margin: 10px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-container button {
+        font-size: 1em;
+        margin: 5px;
+        padding: 8px 16px;
+    }
+
+    .card {
+        height: auto;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .card img {
+        max-width: 100px;
+        margin: 0 0 10px 0;
+    }
+
+    .card-content h4 {
+        font-size: 1.2em;
+    }
 }
